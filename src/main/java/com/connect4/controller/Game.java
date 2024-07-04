@@ -32,8 +32,18 @@ public class Game {
 
         try (Scanner scanner = new Scanner(System.in)) {
             while (!gameWon && !board.isBoardFull()) {
-                System.out.println(currentPlayer.getName() + ", it's your turn. Choose a column (0-6):");
-                int column = scanner.nextInt();
+                System.out.println(currentPlayer.getName() + ", it's your turn. Choose a column (0-6) or type RESTART to start a new game:");
+                String input = scanner.next();
+
+                if (input.equalsIgnoreCase("RESTART")) {
+                    System.out.println("Restarting the game...");
+                    board.reinitializeGrid();
+                    currentPlayer = players[0];
+                    board.displayGrid();
+                    continue;
+                }
+
+                int column = getValidColumn(input, scanner);
 
                 if (board.dropPiece(column, currentPlayer.getColor())) {
                     board.displayGrid();
@@ -57,6 +67,23 @@ public class Game {
 
     public void switchPlayer() {
         currentPlayer = (currentPlayer == players[0]) ? players[1] : players[0];
+    }
+
+    private static int getValidColumn(String input, Scanner scanner) {
+        int column = -1;
+        while (column < 0 || column > 6) {
+            try {
+                column = Integer.parseInt(input);
+                if (column < 0 || column > 6) {
+                    System.out.println("Invalid column. Please choose a column between 0 and 6:");
+                    input = scanner.next();
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a number between 0 and 6:");
+                input = scanner.next();
+            }
+        }
+        return column;
     }
 
     private static Colors chooseColor(Scanner scanner, EnumSet<Colors> availableColors) {

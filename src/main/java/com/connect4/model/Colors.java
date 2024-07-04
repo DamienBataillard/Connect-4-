@@ -15,10 +15,4 @@ public enum Colors {
     BROWN,
     BLACK,
     WHITE;
-
-    @Override
-    public String toString() {
-        // Return the name of the color in lowercase
-        return name().toLowerCase();
-    }
 }
