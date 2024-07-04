@@ -21,19 +21,14 @@ Avant de commencer, assurez-vous d'avoir les logiciels suivants installés sur v
     ```sh
     cd connect-4
 
-3. Accédez au répertoire du projet :
-
-    ```sh
-    cd connect-4
-
-4. Exécution
+3. Exécution
     
     Pour exécuter le jeu, utilisez la commande suivante :
 
     ```sh
     mvn exec:java
 
-5. Instructions de Jeu
+4. Instructions de Jeu
     
     Vous serez invité à entrer les noms des deux joueurs.
     Chaque joueur choisira une couleur parmi les options disponibles.
@@ -41,7 +36,7 @@ Avant de commencer, assurez-vous d'avoir les logiciels suivants installés sur v
     Les joueurs entreront alternativement le numéro de la colonne (0-6) dans laquelle ils souhaitent déposer leur pièce.
     Le jeu se termine lorsqu'un joueur aligne quatre pièces de la même couleur horizontalement, verticalement ou en diagonale, ou lorsque le plateau est plein (match nul).
 
-6. Exemple d'exécution
+5. Exemple d'exécution
 
     Entrez le nom du Joueur 1 :
     Sarah
@@ -61,11 +56,9 @@ Avant de commencer, assurez-vous d'avoir les logiciels suivants installés sur v
 
     Sarah, c'est votre tour. Choisissez une colonne (0-6):
 
-7. Auteur
+6. Auteur
 
     BATAILLARD Damien
     ELMESTARI Karim
     DE MENIBUS Olivier
     BENKIRANE Kamilia
-
-Ce projet est sous licence MIT. Voir le fichier LICENSE pour plus de détails.
