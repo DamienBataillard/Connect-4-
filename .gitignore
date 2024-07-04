@@ -44,8 +44,5 @@ logs/
 # Compiled class files
 *.class
 
-# Bin
-bin/
-
 # Other
 *.swp

@@ -3,6 +3,7 @@ package com.connect4.controller;
 import com.connect4.model.*;
 
 import java.util.EnumSet;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Game {
@@ -27,40 +28,45 @@ public class Game {
     }
 
     public void startGame() {
-        board.displayGrid();
-        boolean gameWon = false;
-
+        boolean continuePlaying = true;
         try (Scanner scanner = new Scanner(System.in)) {
-            while (!gameWon && !board.isBoardFull()) {
-                System.out.println(currentPlayer.getName() + ", it's your turn. Choose a column (0-6) or type RESTART to start a new game:");
-                String input = scanner.next();
+            while (continuePlaying) {
+                board.displayGrid();
+                boolean gameWon = false;
 
-                if (input.equalsIgnoreCase("RESTART")) {
-                    System.out.println("Restarting the game...");
-                    board.reinitializeGrid();
-                    currentPlayer = players[0];
-                    board.displayGrid();
-                    continue;
-                }
+                while (!gameWon && !board.isBoardFull()) {
+                    System.out.println(currentPlayer.getName() + ", it's your turn. Choose a column (0-6) or type RESTART to start a new game:");
+                    String input = scanner.next();
 
-                int column = getValidColumn(input, scanner);
-
-                if (board.dropPiece(column, currentPlayer.getColor())) {
-                    board.displayGrid();
-
-                    if (board.checkPuissance4(currentPlayer.getColor())) {
-                        System.out.println(currentPlayer.getName() + " wins!");
-                        gameWon = true;
-                    } else {
-                        switchPlayer();
+                    if (input.equalsIgnoreCase("RESTART")) {
+                        System.out.println("Restarting the game...");
+                        board.reinitializeGrid();
+                        currentPlayer = players[0];
+                        board.displayGrid();
+                        continue;
                     }
-                } else {
-                    System.out.println("Column " + column + " is full. Try another column.");
-                }
-            }
 
-            if (!gameWon) {
-                System.out.println("The board is full. It's a draw!");
+                    int column = getValidColumn(input, scanner);
+
+                    if (board.dropPiece(column, currentPlayer.getColor())) {
+                        board.displayGrid();
+
+                        if (board.checkPuissance4(currentPlayer.getColor())) {
+                            System.out.println(currentPlayer.getName() + " wins!");
+                            gameWon = true;
+                        } else {
+                            switchPlayer();
+                        }
+                    } else {
+                        System.out.println("Column " + column + " is full. Try another column.");
+                    }
+                }
+
+                if (!gameWon) {
+                    System.out.println("The board is full. It's a draw!");
+                }
+
+                continuePlaying = askToPlayAgain(scanner);
             }
         }
     }
@@ -106,6 +112,18 @@ public class Game {
         }
 
         return chosenColor;
+    }
+
+    private static boolean askToPlayAgain(Scanner scanner) {
+        String response = "";
+        while (!response.equalsIgnoreCase("yes") && !response.equalsIgnoreCase("no")) {
+            System.out.println("Do you want to play again? (yes/no):");
+            response = scanner.next();
+            if (!response.equalsIgnoreCase("yes") && !response.equalsIgnoreCase("no")) {
+                System.out.println("Invalid input. Please enter 'yes' or 'no'.");
+            }
+        }
+        return response.equalsIgnoreCase("yes");
     }
 
     public static void main(String[] args) {
