@@ -3,7 +3,6 @@ package com.connect4.controller;
 import com.connect4.model.*;
 
 import java.util.EnumSet;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Game {
