@@ -1,51 +1,55 @@
 # Connect 4
 
-Ce projet est une implémentation du jeu Connect 4 en Java. Deux joueurs peuvent jouer l'un contre l'autre, choisir leurs noms et leurs couleurs avant de commencer le jeu.
+This project is an implementation of the Connect 4 game in Java. Two players can play against each other, choose their names and colors before starting the game.
 
-## Prérequis
+## Prerequisites
 
-Avant de commencer, assurez-vous d'avoir les logiciels suivants installés sur votre machine :
+Before starting, make sure you have the following software installed on your machine:
 
-- [Java JDK 8 ou supérieur](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
+- [Java JDK 8 or higher](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
 - [Apache Maven](https://maven.apache.org/download.cgi)
 
 ## Installation
 
-1. Clonez le dépôt GitHub :
+1. Clone the GitHub repository:
 
    ```sh
-   git clone https://github.com/votre-utilisateur/connect-4.git
+   git clone https://github.com/your-username/connect-4.git
 
-2. Accédez au répertoire du projet :
+
+2. Navigate to the project directory:
 
     ```sh
     cd connect-4
 
-3. Exécution
-    
-    Pour exécuter le jeu, utilisez la commande suivante :
+3. Compilation
+    To compile the project, use Maven:
+
+    ```sh 
+    mvn clean compile
+
+4. Execution
+    To run the game, use the following command:
 
     ```sh
     mvn exec:java
 
-4. Instructions de Jeu
-    
-    Vous serez invité à entrer les noms des deux joueurs.
-    Chaque joueur choisira une couleur parmi les options disponibles.
-    Le jeu commencera avec le premier joueur choisi aléatoirement.
-    Les joueurs entreront alternativement le numéro de la colonne (0-6) dans laquelle ils souhaitent déposer leur pièce.
-    Le jeu se termine lorsqu'un joueur aligne quatre pièces de la même couleur horizontalement, verticalement ou en diagonale, ou lorsque le plateau est plein (match nul).
+5. Game Instructions
+    You will be prompted to enter the names of the two players.
+    Each player will choose a color from the available options.
+    The game will start with the first player chosen randomly.
+    Players will alternately enter the column number (0-6) in which they want to drop their piece.
+    The game ends when a player aligns four pieces of the same color horizontally, vertically, or diagonally, or when the board is full (draw).
 
-5. Exemple d'exécution
-
-    Entrez le nom du Joueur 1 :
+6. Example Execution
+    Enter the name of Player 1:
     Sarah
-    Entrez le nom du Joueur 2 :
+    Enter the name of Player 2:
     Kenza
-    Sarah, choisissez votre couleur (RED, YELLOW, BLUE, GREEN, ORANGE, PURPLE, PINK, CYAN, MAGENTA, LIME, TEAL, BROWN, BLACK, WHITE) :
-    red
-    Kenza, choisissez votre couleur (RED, YELLOW, BLUE, GREEN, ORANGE, PURPLE, PINK, CYAN, MAGENTA, LIME, TEAL, BROWN, BLACK, WHITE) :
-    blue
+    Sarah, choose your color (RED, YELLOW, BLUE, GREEN, ORANGE, PURPLE, PINK, CYAN, MAGENTA, LIME, TEAL, BROWN, BLACK, WHITE):
+    RED
+    Kenza, choose your color (RED, YELLOW, BLUE, GREEN, ORANGE, PURPLE, PINK, CYAN, MAGENTA, LIME, TEAL, BROWN, BLACK, WHITE):
+    BLUE
 
     . . . . . . .
     . . . . . . .
@@ -54,9 +58,9 @@ Avant de commencer, assurez-vous d'avoir les logiciels suivants installés sur v
     . . . . . . .
     . . . . . . .
 
-    Sarah, c'est votre tour. Choisissez une colonne (0-6):
+    Sarah, it's your turn. Choose a column (0-6):
 
-6. Auteur
+7. Author
 
     BATAILLARD Damien
     ELMESTARI Karim

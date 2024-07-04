@@ -32,25 +32,25 @@ public class Game {
 
         try (Scanner scanner = new Scanner(System.in)) {
             while (!gameWon && !board.isBoardFull()) {
-                System.out.println(currentPlayer.getName() + ", c'est votre tour. Choisissez une colonne (0-6):");
+                System.out.println(currentPlayer.getName() + ", it's your turn. Choose a column (0-6):");
                 int column = scanner.nextInt();
 
                 if (board.dropPiece(column, currentPlayer.getColor())) {
                     board.displayGrid();
 
                     if (board.checkPuissance4(currentPlayer.getColor())) {
-                        System.out.println(currentPlayer.getName() + " a gagné!");
+                        System.out.println(currentPlayer.getName() + " wins!");
                         gameWon = true;
                     } else {
                         switchPlayer();
                     }
                 } else {
-                    System.out.println("Colonne " + column + " est pleine. Essayez une autre colonne.");
+                    System.out.println("Column " + column + " is full. Try another column.");
                 }
             }
 
             if (!gameWon) {
-                System.out.println("Le plateau est plein. Match nul!");
+                System.out.println("The board is full. It's a draw!");
             }
         }
     }
@@ -63,7 +63,7 @@ public class Game {
         Colors chosenColor = null;
 
         while (chosenColor == null) {
-            System.out.println("Choisissez une couleur parmi les suivantes : " + availableColors);
+            System.out.println("Choose a color from the following: " + availableColors);
             String colorChoice = scanner.nextLine().toUpperCase();
             try {
                 Colors color = Colors.valueOf(colorChoice);
@@ -71,10 +71,10 @@ public class Game {
                     chosenColor = color;
                     availableColors.remove(color);
                 } else {
-                    System.out.println("Couleur déjà choisie ou invalide. Veuillez en choisir une autre.");
+                    System.out.println("Color already chosen or invalid. Please choose another.");
                 }
             } catch (IllegalArgumentException e) {
-                System.out.println("Couleur invalide. Veuillez choisir une couleur valide.");
+                System.out.println("Invalid color. Please choose a valid color.");
             }
         }
 
@@ -83,22 +83,22 @@ public class Game {
 
     public static void main(String[] args) {
         try (Scanner scanner = new Scanner(System.in)) {
-            // Saisir les noms des joueurs
-            System.out.println("Entrez le nom du Joueur 1 :");
+            // Enter player names
+            System.out.println("Enter the name of Player 1:");
             String player1Name = scanner.nextLine();
-            System.out.println("Entrez le nom du Joueur 2 :");
+            System.out.println("Enter the name of Player 2:");
             String player2Name = scanner.nextLine();
 
-            // Choisir les couleurs des joueurs
+            // Choose player colors
             EnumSet<Colors> availableColors = EnumSet.allOf(Colors.class);
             Colors player1Color = chooseColor(scanner, availableColors);
             Colors player2Color = chooseColor(scanner, availableColors);
 
-            // Créer les joueurs
+            // Create players
             Player player1 = new Player(player1Name, player1Color);
             Player player2 = new Player(player2Name, player2Color);
 
-            // Lancer le jeu
+            // Start the game
             Game game = new Game(player1, player2);
             game.startGame();
         }
