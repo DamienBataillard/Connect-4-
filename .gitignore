@@ -1,0 +1,51 @@
+# Eclipse
+.project
+.classpath
+.settings/
+bin/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# VS Code
+.vscode/
+
+# Maven
+target/
+!**/src/main/**/target/
+!**/src/test/**/target/
+pom.xml.tag
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Compiled class files
+*.class
+
+# Bin
+bin/
+
+# Other
+*.swp
