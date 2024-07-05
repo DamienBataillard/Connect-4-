@@ -16,12 +16,4 @@ public class Player {
     public Colors getColor() {
         return color;
     }
-
-    public void makeMove(Board board, int column) {
-        if (board.dropPiece(column, color)) {
-            System.out.println(name + " a placé une pièce dans la colonne " + column);
-        } else {
-            System.out.println("Colonne " + column + " est pleine. Essayez une autre colonne.");
-        }
-    }
 }
