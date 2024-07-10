@@ -12,9 +12,31 @@ public class GameUI {
         scanner = new Scanner(System.in);
     }
 
+    public void showMenu() {
+        System.out.println("1. Start Game");
+        System.out.println("2. Configure Game");
+        System.out.println("3. Exit");
+    }
+
+    public int getMenuChoice() {
+        int choice = -1;
+        while (choice < 1 || choice > 3) {
+            System.out.print("Enter your choice: ");
+            try {
+                choice = Integer.parseInt(scanner.next());
+                if (choice < 1 || choice > 3) {
+                    System.out.println("Invalid choice. Please choose between 1 and 3.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a number between 1 and 3.");
+            }
+        }
+        return choice;
+    }
+
     public String getPlayerName(int playerNumber) {
         System.out.println("Enter the name of Player " + playerNumber + ":");
-        return scanner.nextLine();
+        return scanner.next();
     }
 
     public Colors chooseColor(String playerName, EnumSet<Colors> availableColors) {
@@ -22,7 +44,7 @@ public class GameUI {
 
         while (chosenColor == null) {
             System.out.println(playerName + ", choose a color from the following: " + availableColors);
-            String colorChoice = scanner.nextLine().toUpperCase();
+            String colorChoice = scanner.next().toUpperCase();
             try {
                 Colors color = Colors.valueOf(colorChoice);
                 if (availableColors.contains(color)) {
@@ -57,17 +79,5 @@ public class GameUI {
             }
         }
         return column;
-    }
-
-    public boolean askToPlayAgain() {
-        String response = "";
-        while (!response.equalsIgnoreCase("yes") && !response.equalsIgnoreCase("no")) {
-            System.out.println("Do you want to play again? (yes/no):");
-            response = scanner.next();
-            if (!response.equalsIgnoreCase("yes") && !response.equalsIgnoreCase("no")) {
-                System.out.println("Invalid input. Please enter 'yes' or 'no'.");
-            }
-        }
-        return response.equalsIgnoreCase("yes");
     }
 }
